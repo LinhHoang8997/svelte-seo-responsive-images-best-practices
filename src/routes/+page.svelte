@@ -24,7 +24,7 @@
   });
 
   // Console log the filename
-  // $: filename = (asset_link ? asset_link.split("/").pop() ?? "" : "");
+  $: filename = (asset_link ? asset_link.split("/").pop() ?? "" : "");
 
 </script>
 
@@ -38,6 +38,9 @@
 
 <h3>Current viewport width:</h3>
 <p>{viewport_width}</p>
+
+<h3>Image initially loaded based on the starting viewport width:</h3>
+<p>{filename}</p>
 
 <!-- <img
 
