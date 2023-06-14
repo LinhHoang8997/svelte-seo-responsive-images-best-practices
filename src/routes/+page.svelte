@@ -1,19 +1,23 @@
 <script>
+  export let data;
+
+  // Import the user agent from the data object
+  let user_agent = data.user_agent ?? "";
+
+  // Use device-detector-js to parse the user agent
+  import DeviceDetector from "device-detector-js";
+  const deviceDetector = new DeviceDetector();
+  $: device = deviceDetector.parse(user_agent);
+  $: console.log(device);
+
   /**
    * @type {HTMLImageElement}
    */
   let responsive_element;
 
-  /**
-   * @type {string}
-   */
-  let asset_link;
+  let asset_link = "";
 
-  /**
-   * @type {number}
-   */
-
-  let viewport_width;
+  let viewport_width = 0;
 
   // Import onMount from Svelte
   import { onMount } from "svelte";
@@ -24,8 +28,7 @@
   });
 
   // Console log the filename
-  $: filename = (asset_link ? asset_link.split("/").pop() ?? "" : "");
-
+  $: filename = asset_link ? asset_link.split("/").pop() ?? "" : "";
 </script>
 
 <svelte:window bind:innerWidth={viewport_width} />
@@ -39,30 +42,34 @@
 <h3>Current viewport width:</h3>
 <p>{viewport_width}</p>
 
+<h3>Current user agent:</h3>
+<p>{user_agent}</p>
+
 <h3>Image initially loaded based on the starting viewport width:</h3>
-<p>{filename}</p>
-
-<!-- <img
-
-  src="$lib/images/300x200.webp"
-  srcset="$lib/images/300x200.webp 320w,
-  $lib/images/600x400.webp 600w,
-  $lib/images/1200x800.webp 1200w"
-  sizes="(max-width: 320px): 300px,
-  (max-width: 600px): 600px,
-  (max-width: 1200px): 1200px,
-  600px"
-  alt="Placeholder"
-  title="Placeholder"
-/> -->
-
-<!-- Convert the img element above to <picture> tag -->
-
-<picture title="Placeholder">
-  <source media="(max-width: 320px)" srcset="$lib/images/300x200.webp" />
-  <source media="(max-width: 600px)" srcset="$lib/images/600x400.webp" />
-  <source media="(max-width: 1200px)" srcset="$lib/images/1200x800.webp" />
-  <img id="test-image" bind:this={responsive_element} src="$lib/images/1200x800.webp" alt="Placeholder" title="Placeholder" />
+<!-- Create <picture> tag -->
+<picture>
+  <source
+    media="(max-width: 320px)"
+    type="image/webp"
+    srcset="$lib/images/300x200.webp"
+  />
+  <source
+    media="(max-width: 600px)"
+    type="image/webp"
+    srcset="$lib/images/600x400.webp"
+  />
+  <source
+    media="(max-width: 1200px)"
+    type="image/webp"
+    srcset="$lib/images/1200x800.webp"
+  />
+  <img
+    id="test-image"
+    bind:this={responsive_element}
+    src="$lib/images/1200x800.webp"
+    alt="Placeholder"
+    title="Placeholder"
+  />
 </picture>
 
 <style>
