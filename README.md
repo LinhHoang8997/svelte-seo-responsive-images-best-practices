@@ -1,38 +1,12 @@
-# create-svelte
+# Example for SEO folks - Use of picture element for responsive images
+An example of the <picture> element being used to serve a differently sized WebP image to the browser depending on the viewport width of the device in question
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+# Why use the picture element?
+- It allows the browser to choose the most appropriate image to serve to the user
+- It preserves art directions as it allows specific variations to be shown depending on highly-readable media queries
+- It's a native HTML element that has extensive and comprehensive documentation
+- It's supported by all modern browsers
+- In my own experience, it's a lot easier to use (and less error-prone) than the srcset attribute on the img element
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+# How to use this example
+- Feel free to share this example with your clients and fellow SEOs
