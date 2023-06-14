@@ -1,5 +1,5 @@
 # Example for SEO folks - Use of picture element for responsive images
-An example of the <picture> element being used to serve a differently sized WebP image to the browser depending on the viewport width of the device in question
+An example of the `<picture>` element being used to serve a differently sized WebP image to the browser depending on the viewport width of the device in question
 
 # Why use the picture element?
 - It allows the browser to choose the most appropriate image to serve to the user
